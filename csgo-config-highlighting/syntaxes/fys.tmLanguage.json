@@ -1,0 +1,216 @@
+{
+  "$schema":"https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name":"CSGO",
+  "scopeName":"source.bsp",
+  "patterns":[
+
+    {
+      "comment": "注释",
+      "name":"comment.line",
+      "match":"(^\\s*;|(\/\/)).*"
+    },
+
+    {
+      "comment": "注释",
+      "match": "//.*",
+      "name": "comment.line"
+    },
+
+    {
+      "comment": "stripper头",
+      "match":"\\b(add:|delete:|filter:|insert:|match:|modify:|replace:|remove:)",
+      "name":"keyword.control"
+    },
+
+    {
+      "comment": "KV头",
+      "match": "^\\s*(?!\".*?\"\\s*\".*?\")\".*?\"",
+      "name": "keyword.control"
+    },
+
+    {
+      "comment": "KV头",
+      "match": "^\\s*(\".\\d?\")",
+      "name": "entity.name.tag.txt"
+    },
+
+    {
+      "comment": "KV",
+      "match": "(\".*?\")\\s*\"(.*?)\"",
+      "name": "invalid",
+      "captures": {
+          "1": {
+            "patterns": [
+
+              {
+                "include": "#entwatch"
+              },
+              {
+                "include": "#buttons"
+              },
+              {
+                "include": "#bosshp"
+              },
+              {
+                "include": "#mapdata"
+              },
+              {
+                "include": "#consolet"
+              },
+
+              {
+                "include": "#entityProperty"
+              },
+              {
+                "include": "#output"
+              }
+            ]
+          },
+          "2": {
+            "patterns": [
+              {
+                "include": "#boolean"
+              },
+              {
+                "include": "#nullable"
+              },
+              {
+                "include": "#number"
+              },
+              {
+                "include": "#entity"
+              },
+
+              {
+                "match":"\\S+",
+                "name":"string.quoted.txt"
+              }
+            ]
+          }
+      }
+    }
+  ],
+  "repository":{
+    "entity":{
+      "patterns":[
+        {
+          "name":"constant.character.set.regexp",
+          "match":"(?i)\\b(ai_ally_speech_manager|ai_battle_line|ai_changehintgroup|ai_changetarget|ai_goal_assault|ai_goal_fightfromcover|ai_goal_follow|ai_goal_lead|ai_goal_lead_weapon|ai_goal_standoff|ai_hint|ai_network|ai_script_conditions|ai_sound|ai_speechfilter|aiscripted_schedule|aitesthull|ambient_generic|ammo_9mm|ammo_45acp|ammo_50ae|ammo_57mm|ammo_338mag|ammo_357sig|ammo_357sig_np_reserve|ammo_357sig_p250|ammo_357sig_small|ammo_556mm|ammo_556mm_box|ammo_556mm_small|ammo_762mm|ammo_buckshot|assault_assaultpoint|assault_rallypoint|baseprojectile|beam|beam_spotlight|breachcharge_projectile|bumpmine_projectile|cfe_player_decal|chicken|color_correction|color_correction_volume|commentary_auto|cs_bot|cs_gamerules|cs_player_manager|cs_ragdoll|cs_team_manager|cycler|cycler_actor|cycler_blender|cycler_flex|cycler_weapon|cycler_wreckage|dangerzone_controller|dangerzone_entity|decoy_projectile|drone|dronegun|dynamic_prop|dz_door|ent_snowball_pile|entity_blocker|entityflame|env_ambient_light|env_beam|env_beverage|env_blood|env_bubbles|env_cascade_light|env_credits|env_debughistory|env_detail_controller|env_dof_controller|env_dustpuff|env_dusttrail|env_effectscript|env_embers|env_entity_dissolver|env_entity_freezing|env_entity_igniter|env_entity_maker|env_explosion|env_fade|env_fire|env_fire_trail|env_firesensor|env_firesource|env_fog_controller|env_funnel|env_gascanister|env_global|env_glow|env_gunfire|env_hudhint|env_instructor_hint|env_laser|env_lightglow|env_message|env_microphone|env_movieexplosion|env_muzzleflash|env_outtro_stats|env_particle_performance_monitor|env_particle_trail|env_particlefire|env_particlelight|env_particlescript|env_particlesmokegrenade|env_physexplosion|env_physimpact|env_physwire|env_player_surface_trigger|env_projectedtexture|env_quadraticbeam|env_ragdoll_boogie|env_rockettrail|env_rotorshooter|env_screeneffect|env_screenoverlay|env_shake|env_shooter|env_smokestack|env_smoketrail|env_soundscape|env_soundscape_proxy|env_soundscape_triggerable|env_spark|env_splash|env_sporeexplosion|env_sporetrail|env_sprite|env_sprite_clientside|env_sprite_oriented|env_spritetrail|env_steam|env_steamjet|env_sun|env_texturetoggle|env_tilt|env_tonemap_controller|env_tracer|env_viewpunch|env_wind|env_zoom|event_queue_saveload_proxy|filter_activator_class|filter_activator_context|filter_activator_mass_greater|filter_activator_model|filter_activator_name|filter_activator_team|filter_base|filter_damage_type|filter_enemy|filter_multi|fire_cracker_blast|fish|flashbang_projectile|fog_volume|func_areaportal|func_areaportalwindow|func_block_dm_spawns|func_bomb_target|func_breakable|func_breakable_surf|func_brush|func_button|func_buyzone|func_clip_vphysics|func_conveyor|func_detail_blocker|func_door|func_door_rotating|func_dustcloud|func_dustmotes|func_fish_pool|func_footstep_control|func_guntarget|func_hostage_rescue|func_illusionary|func_instance_io_proxy|func_ladderendpoint|func_lod|func_monitor|func_movelinear|func_nav_avoidance_obstacle|func_nav_blocker|func_no_defuse|func_occluder|func_physbox|func_physbox_multiplayer|func_plat|func_platrot|func_precipitation|func_precipitation_blocker|func_proprrespawnzone|func_pushable|func_reflective_glass|func_rot_button|func_rotating|func_smokevolume|func_survival_c4_target|func_tablet_blocker|func_tank|func_tankairboatgun|func_tankapcrocket|func_tanklaser|func_tankpulselaser|func_tankrocket|func_tanktrain|func_trackautochange|func_trackchange|func_tracktrain|func_train|func_traincontrols|func_useableladder|func_vehicleclip|func_wall|func_wall_toggle|func_water|func_water_analog|func_weight_button|funCBaseFlex|game_coopmission_manager|game_end|game_gib_manager|game_money|game_player_equip|game_player_team|game_ragdoll_manager|game_round_end|game_score|game_survival_logic|game_text|game_ui|game_weapon_manager|game_zone_player|generic_actor|gib|gibshooter|global_chatter|grassburn|grenade|hammer_updateignorelist|handle_dummy|handle_test|hegrenade_projectile|hostage_carriable_prop|hostage_entity|inferno|info_armsrace_counterterrorist|info_armsrace_terrorist|info_bomb_target_hint_A|info_bomb_target_hint_B|info_camera_link|info_constraint_anchor|info_deathmatch_spawn|info_enemy_terrorist_spawn|info_game_event_proxy|info_gascanister_launchpoint|info_hint|info_hostage_rescue_zone_hint|info_hostage_spawn|info_intermission|info_ladder_dismount|info_landmark|info_map_parameters|info_map_region|info_mass_center|info_node|info_node_air|info_node_air_hint|info_node_climb|info_node_hint|info_node_link|info_node_link_controller|info_null|info_overlay_accessor|info_paradrop_denial|info_particle_system|info_player_counterterrorist|info_player_deathmatch|info_player_logo|info_player_ping|info_player_start|info_player_teamspawn|info_player_terrorist|info_projecteddecal|info_radial_link_controller|info_remarkable|info_target|info_target_instructor_hint|info_teleport_destination|info_vehicle_groundspawn|info_view_parameters|infodecal|instanced_scripted_scene|item_assaultsuit|item_cash|item_coop_coin|item_cutters|item_defuser|item_dogtags|item_heavyassaultsuit|item_kevlar|item_nvgs|item_sodacan|keyframe_rope|keyframe_track|light|light_directional|light_dynamic|light_environment|light_glspot|light_spot|logic_active_autosave|logic_auto|logic_autosave|logic_branch|logic_branch_listener|logic_case|logic_choreographed_scene|logic_collision_pair|logic_compare|logic_eventlistener|logic_eventlistener_itemequip|logic_lineto|logic_measure_movement|logic_multicompare|logic_navigation|logic_playerproxy|logic_playmovie|logic_proximity|logic_random_outputs|logic_register_activator|logic_relay|logic_scene_list_manager|logic_script|logic_timer|mapvetopick_controller|material_modify_control|math_colorblend|math_counter|math_remap|model_studio|molotov_projectile|momentary_door|momentary_rot_button|monster_furniture|monster_generic|move_keyframed|move_rope|multisource|npc_furniture|npc_heardanger|npc_vehicledriver|paradrop_chopper|path_corner|path_corner_crash|path_track|phys_ballsocket|phys_bone_follower|phys_constraint|phys_constraintsystem|phys_convert|phys_hinge|phys_keepupright|phys_lengthconstraint|phys_magnet|phys_motor|phys_pulleyconstraint|phys_ragdollconstraint|phys_ragdollmagnet|phys_slideconstraint|phys_spring|phys_thruster|phys_torque|physics_cannister|physics_entity_solver|physics_npc_solver|physics_prop|physics_prop_ragdoll|physics_prop_statue|planted_c4|planted_c4_survival|planted_c4_training|player|player_loadsaved|player_manager|player_speedmod|player_weaponstrip|point_anglesensor|point_angularvelocitysensor|point_bonusmaps_accessor|point_broadcastclientcommand|point_camera|point_clientcommand|point_commentary_node|point_commentary_viewpoint|point_devshot_camera|point_dz_dronegun|point_dz_itemspawn|point_dz_itemspawn_group|point_dz_parachute|point_dz_weaponspawn|point_dz_weaponspawn_group|point_enable_motion_fixup|point_entity_finder|point_gamestats_counter|point_give_ammo|point_hiding_spot|point_hurt|point_message|point_playermoveconstraint|point_posecontroller|point_proximity_sensor|point_servercommand|point_spotlight|point_surroundtest|point_teleport|point_template|point_tesla|point_velocitysensor|point_viewcontrol|point_viewcontrol_multiplayer|point_viewproxy|point_worldtext|postprocess_controller|predicted_viewmodel|prop_ammo_box_generic|prop_counter|prop_door_rotating|prop_dynamic|prop_dynamic_glow|prop_dynamic_ornament|prop_dynamic_override|prop_exploding_barrel|prop_hallucination|prop_loot_crate|prop_mapplaced_long_use_entity|prop_metal_crate|prop_money_crate|prop_paradrop_crate|prop_physics|prop_physics_multiplayer|prop_physics_override|prop_physics_respawnable|prop_ragdoll|prop_ragdoll_attached|prop_sphere|prop_talker|prop_vehicle|prop_vehicle_driveable|prop_weapon_refill_heavyarmor|prop_weapon_upgrade_armor|prop_weapon_upgrade_armor_helmet|prop_weapon_upgrade_chute|prop_weapon_upgrade_contractkill|prop_weapon_upgrade_exojump|prop_weapon_upgrade_helmet|prop_weapon_upgrade_tablet_droneintel|prop_weapon_upgrade_tablet_highres|prop_weapon_upgrade_tablet_zoneintel|radar_jammer|raggib|rope_anchor|scene_manager|scripted_scene|scripted_sentence|scripted_sequence|scripted_target|shadow_control|simple_physics_brush|simple_physics_prop|sky_camera|skybox_swapper|smokegrenade_projectile|snowball_projectile|soundent|spark_shower|spotlight_end|sunlight_shadow_control|survival_spawn_chopper|tagrenade_projectile|tanktrain_ai|tanktrain_aitarget|target_cdaudio|target_changegravity|te_tester|team_manager|test_effect|test_proxytoggle|test_traceline|trigger|trigger_auto_crouch|trigger_autosave|trigger_bomb_reset|trigger_brush|trigger_cdaudio|trigger_changelevel|trigger_fog|trigger_gravity|trigger_hierarchy|trigger_hurt|trigger_impact|trigger_look|trigger_multiple|trigger_once|trigger_playermovement|trigger_proximity|trigger_push|trigger_remove|trigger_safemoneygather|trigger_serverragdoll|trigger_softbarrier|trigger_soundoperator|trigger_soundscape|trigger_survival_playarea|trigger_teleport|trigger_togglesave|trigger_tonemap|trigger_transition|trigger_vphysics_motion|trigger_wind|vgui_movie_display|vgui_screen|vgui_screen_team|vgui_slideshow_display|vgui_world_text_panel|viewmodel|vote_controller|water_lod_control|waterbullet|weapon_ak47|weapon_aug|weapon_awp|weapon_basecsgrenade|weapon_bizon|weapon_breachcharge|weapon_bumpmine|weapon_c4|weapon_cs_base|weapon_csbase_gun|weapon_deagle|weapon_decoy|weapon_elite|weapon_famas|weapon_fists|weapon_fiveseven|weapon_flashbang|weapon_g3sg1|weapon_galil|weapon_galilar|weapon_glock|weapon_healthshot|weapon_hegrenade|weapon_hkp2000|weapon_incgrenade|weapon_knife|weapon_knifegg|weapon_m3|weapon_m4a1|weapon_m249|weapon_mac10|weapon_mag7|weapon_melee|weapon_molotov|weapon_mp5navy|weapon_mp7|weapon_mp9|weapon_negev|weapon_nova|weapon_p90|weapon_p228|weapon_p250|weapon_sawedoff|weapon_scar17|weapon_scar20|weapon_scout|weapon_sg550|weapon_sg552|weapon_sg556|weapon_shield|weapon_smokegrenade|weapon_snowball|weapon_ssg08|weapon_tablet|weapon_tagrenade|weapon_taser|weapon_tec9|weapon_tmp|weapon_ump45|weapon_usp|weapon_xm1014|weapon_zone_repulsor|weaponworldmodel|wearable_item|window_pane|world_items|worldspawn)\\b"
+        },
+        {
+          "include":"#specialEntity"
+        }
+      ]
+    },
+    "specialEntity":{
+      "patterns":[
+        {
+          "name":"constant.character.set.regexp",
+          "match":"(?i)(!activator|!caller|!picker|!player|!player_blue|!player_orange|!pvsplayer|!self|_firesmoke|_plasma)\\b"
+        }
+      ]
+    },
+    "entityProperty":{
+      "patterns":[
+        {
+          "name":"variable.other.constant",
+          "match":"(?i)\\b(spritename|AnimateEveryFrame|AwardText|BreakModelMessage|BreakableType|CheckDestIfClearForPlayer|DefaultAnim|DisableBoneFollowers|EntityTemplate|EventName|ExplodeDamage|ExplodeRadius|ExploitableByPlayer|FallingSpeedThreshold|FetchEventData|Filter01|Filter02|Filter03|Filter04|Filter05|Filter06|Filter07|Filter08|Filter09|Filter10|FilterType|HoldAnimation|HostageSpawnExclusionGroup1|HostageSpawnExclusionGroup10|HostageSpawnExclusionGroup11|HostageSpawnExclusionGroup12|HostageSpawnExclusionGroup13|HostageSpawnExclusionGroup14|HostageSpawnExclusionGroup15|HostageSpawnExclusionGroup16|HostageSpawnExclusionGroup17|HostageSpawnExclusionGroup18|HostageSpawnExclusionGroup19|HostageSpawnExclusionGroup2|HostageSpawnExclusionGroup20|HostageSpawnExclusionGroup21|HostageSpawnExclusionGroup22|HostageSpawnExclusionGroup23|HostageSpawnExclusionGroup24|HostageSpawnExclusionGroup25|HostageSpawnExclusionGroup26|HostageSpawnExclusionGroup27|HostageSpawnExclusionGroup28|HostageSpawnExclusionGroup29|HostageSpawnExclusionGroup3|HostageSpawnExclusionGroup30|HostageSpawnExclusionGroup4|HostageSpawnExclusionGroup5|HostageSpawnExclusionGroup6|HostageSpawnExclusionGroup7|HostageSpawnExclusionGroup8|HostageSpawnExclusionGroup9|HostageSpawnRandomFactor|HostageType|InputFilter|IsEnabled|LagCompensate|LowerRandomBound|MaxAnimTime|MeasureReference|MeasureTarget|MeasureType|MinAnimTime|Money|MovePingSound|MoveSound|MoveSoundMaxPitch|MoveSoundMaxTime|MoveSoundMinPitch|MoveSoundMinTime|Negated|OnlyFallingPlayers|PerformanceMode|PostSpawnDirection|PostSpawnDirectionVariance|PostSpawnInheritAngles|PostSpawnSpeed|RandomAnimation|RefireTime|ResponseContext|SetBodyGroup|SkyboxName|Solidity|StartDisabled|StartSound|StopSound|TargetReference|TargetScale|Template01|Template02|Template03|Template04|Template05|Template06|Template07|Template08|Template09|Template10|Template11|Template12|Template13|Template14|Template15|Template16|UpperRandomBound|UseLandmarkAngles|UseRandomTime|ViewMode|_minlight|acceleration|affectsFlow|ajarangles|alternateticksfix|altpath|ammo|angles|armor_to_give|axis|bank|bias|blockdamage|body|bomb_mount_target|bombradius|botmaxvisiondistance|brightness|buying|candamageplayer|chainstodoor|channel|classname|closesound|color|color2|cpoint1|cpoint10|cpoint11|cpoint12|cpoint13|cpoint14|cpoint15|cpoint16|cpoint17|cpoint18|cpoint19|cpoint1_parent|cpoint2|cpoint20|cpoint21|cpoint22|cpoint23|cpoint24|cpoint25|cpoint26|cpoint27|cpoint28|cpoint29|cpoint2_parent|cpoint3|cpoint30|cpoint31|cpoint32|cpoint33|cpoint34|cpoint35|cpoint36|cpoint37|cpoint38|cpoint39|cpoint3_parent|cpoint4|cpoint40|cpoint41|cpoint42|cpoint43|cpoint44|cpoint45|cpoint46|cpoint47|cpoint48|cpoint49|cpoint4_parent|cpoint5|cpoint50|cpoint51|cpoint52|cpoint53|cpoint54|cpoint55|cpoint56|cpoint57|cpoint58|cpoint59|cpoint5_parent|cpoint6|cpoint60|cpoint61|cpoint62|cpoint63|cpoint6_parent|cpoint7|cpoint7_parent|cpoint8|cpoint9|damage|damagecap|damagefilter|damagemodel|damagetoenablemotion|damagetype|deceleration|default_weight|disableX360|disableautogenerateddmspawns|disableflashlight|disablereceiveshadows|disableselfshadowing|disableshadowdepth|disableshadows|disablevertexlighting|distance|dmg|door_name|drawinfastreflection|effect|effect_name|effects|enabled|enablelightbounce|excludednpc|explodemagnitude|explosion|fademaxdist|fademindist|fadescale|filter_max_per_enemy|filter_outer_radius|filter_radius|filterclass|filtermass|filtername|filterteam|forceclosed|forcetoenablemotion|fov_rate|framerate|fxtime|generatelightmaps|gibdir|gibmodel|globalname|glow|glowcolor|glowdist|glowenabled|glowrange|glowrangemin|glowstate|glowstyle|groupID|hammerid|hardware|health|height|heistbomb|holdtime|hull_name|ignoredebris|ignorenormals|inertiascale|initialValue|interp_time|interpolatepositiontoplayer|invert_exclusion|is_autoaim_target|landmark|lightingorigin|lightmapresolutionx|lightmapresolutiony|lip|locked_sentence|locked_sound|loopmovesound|ltime|massscale|master|material|max|max_health|maxburstdelay|maxburstsize|maxcpulevel|maxdxlevel|maxgpulevel|maxs|message|min|min_use_angle|minburstdelay|minburstsize|mincpulevel|mindxlevel|mingpulevel|minhealthdmg|mins|model|model_to_use|modelindex|modelscale|movedir|movedistance|moveto|nextthink|nodamageforces|nodmgforce|noise1|noise2|notsolid|opendir|orientationtype|origin|overridescript|parentname|petpopulation|physdamagescale|points|preferredcarryangles|pressuredelay|preventpropcombine|priority|propdata|puntsound|pushdir|radius|renderamt|rendercolor|renderfx|rendermode|returndelay|screenspacefade|shadowcastdist|shadowdepthnocache|skin|slavename|solid|solidbsp|soundcloseoverride|soundlockedoverride|soundmoveoverride|soundopenoverride|sounds|soundunlockedoverride|spawnAutomatically|spawnflags|spawnobject|spawnpos|speed|spread|start_active|startclosesound|startposition|startspeed|startvalue|target|target_entity|target_team|targetattachment|targetname|teamToBlock|texframeindex|textsize|thinkfunction|token|trackspeed|uniformscale|unlocked_sentence|unlocked_sound|updatechildren|usenormalspawnsfordm|velocitytype|vrad_brush_cast_shadows|vscripts|wait|weaponname|weapons_to_give|wheels|x|y)\\b"
+        }
+      ]
+    },
+    "input":{
+      "patterns":[
+        {
+          "name":"constant.other.rgb-value",
+          "match":"(?i)\\b(Activate|ActivateSetTimerLength|Add|AddContext|AddHealth|AddMoneyPlayer|AddOutput|AddScoreCT|AddScoreTerrorist|AddTeamMoneyCT|AddTeamMoneyTerrorist|AddToTimer|Alpha|AlternativeSorting|ApplyScore|BecomeDebris|BecomeRagdoll|BlockNav|Break|CallScriptFunction|CancelPending|ClearContext|ClearParent|Close|Command|Deactivate|DestroyImmediately|Disable|DisableAlternatePath|DisableAndEndTouch|DisableCollision|DisableDamageForces|DisableDraw|DisableDrawInFastReflection|DisableFloating|DisableMotion|DisablePath|DisableReceivingFlashlight|DisableShadow|DispatchEffect|DispatchResponse|Display|Divide|Enable|EnableAlternatePath|EnableCollision|EnableDamageForces|EnableDraw|EnableDrawInFastReflection|EnableMotion|EnablePath|EnableReceivingFlashlight|EnableRefire|EnableShadow|EndTouch|FadeAndKill|FireCorrectOutput|FireTimer|FireUser1|FireUser2|FireUser3|FireUser4|FireWinCondition|ForceDrop|ForceSpawn|ForceSpawnAtEntityOrigin|GetSpeed|GetValue|GiveAmmo|GlowColorBlueValue|GlowColorGreenValue|GlowColorRedValue|Ignite|IgniteLifetime|InValue|InitializeSpawnFromWorld|invnextitem|invnextnongrenade|Kill|KillHierarchy|LightOff|LightOn|Lock|LockOrientation|ModifySpeed|MoveToPathNode|MoveToRotationDistance|Multiply|OnZoneEndGameStart|OnZoneRocketStartLaunch|OnZoneRocketWarning|Open|OpenAwayFrom|PickRandom|PickRandomShuffle|PlaySound|Press|PressIn|PressOut|RemoveContext|RemoveHealth|RemovePaint|ResetTimer|Resume|ReturnToEyes|Reverse|RunScriptCode|RunScriptFile|say|say_team|SetAnimation|SetAnimationNoReset|SetBreakable|SetDamage|SetDamageFilter|SetDefaultAnimation|SetDisabled|SetEnabled|SetExcluded|SetGlowColor|SetGlowDisabled|SetGlowEnabled|SetHealth|SetHitMax|SetHitMin|SetInvert|SetLightingOrigin|SetLocalAngles|SetLocalOrigin|SetMass|SetMaxSpeed|SetMaxValueNoFire|SetMeasureReference|SetMeasureTarget|SetMessage|SetMinValueNoFire|SetModelScale|SetMoneyAmount|SetParent|SetParentAttachment|SetParentAttachmentMaintainOffset|SetPath|SetPlaybackRate|SetPosition|SetPushDir|SetPushDirection|SetRotationDistance|SetSpeed|SetSpeedDir|SetSpeedReal|SetTargetAttachment|SetTargetReference|SetTargetScale|SetText|SetTrackSpeed|SetUnbreakable|SetValue|SetValueNoFire|Sleep|SnapToStartPos|SpendMoneyFromPlayer|Start|StartBackward|StartForward|StartGlowing|StartMovement|StartTouch|Steer|Stop|StopAtStartPos|StopGlowing|StopPlayEndCap|Subtract|SubtractFromTimer|TeleportToPathNode|TeleportToView|TestActivator|Throttle|Toggle|ToggleAlternatePath|ToggleEnabled|TogglePath|ToggleScores|TouchTest|Trigger|TriggerForActivatedPlayer|TriggerForAllPlayers|TriggerWithParameter|TurnOff|TurnOn|UnblockNav|Unlock|UnlockOrientation|Wake|autobuy|bot_goto_selected|bot_kick|buyammo1|buyammo2|buymenu|cancelselect|changeclass|changeteam|chatwheel_ping|cl_decline_first_notification|cl_trigger_first_notification|disconnect|disguiseteam|drop|dropitem|dump_entity_sizes|dump_globals|dumpstringtables|echo|econ_droppaintedgun|endmovie|ent_absbox|ent_bbox|ent_debugkeys|ent_dump|ent_fire|ent_info|ent_messages|ent_messages_draw|ent_name|ent_pause|ent_picker|ent_pivot|ent_rbox|ent_remove|ent_remove_all|ent_setname|ent_show_response_criteria|ent_step|ent_text|exec|exit|fadein|fadeout|find|findflags|firstperson|invnext|invprev|kill|killvector|lastdisguise|lastinv|messagemode|messagemode2|mute|noclip|open_charinfo_backpack|open_charinfo_direct|player_ping|playgamesound|playsoundscape|playvol|quit|r_cleardecals|radio|rebuy|record|reload|retry|say_party|show_loadout_toggle|show_quest_log|showmapinfo|showtrigger_toggle|slot0|slot1|slot10|slot12|slot2|slot3|slot4|slot5|slot6|slot7|slot8|slot9|spawn|stopsoundscape|teammenu|thirdperson|toggle_duck|toggle_zoom|toggleconsole|unbind|unbindall|unpause|use|voice_menu_1|voice_menu_2|voice_menu_3)\\b"
+        }
+      ]
+    },
+    "output":{
+      "patterns":[
+        {
+          "name":"keyword.operator.quantifier.regexp",
+          "match":"(?i)\\b(BombDefused|BombExplode|BombPlanted|On2Speakers|On4Speakers|On51Speakers|OnAnimationBegun|OnAnimationDone|OnArrivedAtDestinationNode|OnAwakened|OnBackgroundMap|OnBeginFade|OnBlockedClosing|OnBlockedOpening|OnBombBeginDefuse|OnBombDefuseAborted|OnBombDefused|OnBombExploded|OnBreak|OnCacheInteraction|OnCase01|OnCase02|OnCase03|OnCase04|OnCase05|OnCase06|OnCase07|OnCase08|OnCase09|OnCase10|OnCase11|OnCase12|OnCase13|OnCase14|OnCase15|OnCase16|OnChangedFromMax|OnChangedFromMin|OnClose|OnDamaged|OnDeath|OnDefault|OnDroppedNotRescued|OnEndFollow|OnEndTouch|OnEndTouchAll|OnEntireTeamEndTouch|OnEntireTeamStartTouch|OnEntityFailedSpawn|OnEntitySpawned|OnEventFired|OnFail|OnFirstPickedUp|OnFizzled|OnFullyClosed|OnFullyOpen|OnGetSpeed|OnGetValue|OnHealthChanged|OnHearCombat|OnHearPlayer|OnHearWorld|OnHitMax|OnHitMin|OnHostageBeginGrab|OnHurt|OnHurtPlayer|OnIgnite|OnIn|OnKilled|OnLoadGame|OnLockedUse|OnMapSpawn|OnMapTransition|OnMissionCompleted|OnMoneySpent|OnMoneySpentFail|OnMotionEnabled|OnMultiNewMap|OnMultiNewRound|OnNPCPickup|OnNewGame|OnNext|OnNotTouching|OnOpen|OnOut|OnOutOfWorld|OnPass|OnPhysCannonAnimatePostStarted|OnPhysCannonAnimatePreStarted|OnPhysCannonAnimatePullStarted|OnPhysCannonDetach|OnPhysCannonPullAnimFinished|OnPhysGunDrop|OnPhysGunOnlyPickup|OnPhysGunPickup|OnPhysGunPunt|OnPlayerPickup|OnPlayerUse|OnPressed|OnRescued|OnRotationDone|OnRoundEnded|OnRoundLostKilled|OnRoundLostTime|OnRoundReset|OnSpawn|OnSpawnsReset|OnStart|OnStartTouch|OnStartTouchAll|OnTakeDamage|OnTeleport|OnTimer|OnTimerHigh|OnTimerLow|OnTouching|OnTrigger|OnTriggerParameter|OnUnblockedClosing|OnUnblockedOpening|OnUseLocked|OnUser1|OnUser2|OnUser3|OnUser4|OnWaveCompleted|OutValue)\\b"
+        }
+      ]
+    },
+    "entwatch":{
+      "patterns":[
+        {
+          "name":"support.type",
+          "match":"(?i)\\b(name|shortname|buttonclass|filtername|hasfiltername|hammerid|mode|glow|hud|autotransfer|maxuses|cooldown|maxamount|startcd|triggerid|containerid|isWall|level|children|team)\\b"
+        }
+      ]
+    },
+    "mapdata":{
+      "patterns":[
+        {
+          "name":"support.type",
+          "match":"(?i)\\b(m_Description|m_CertainTimes|m_Price|m_PricePartyBlock|m_MinPlayers|m_MaxPlayers|m_MaxCooldown|m_NominateOnly|m_VipOnly|m_AdminOnly|m_RefundRatio)\\b"
+        }
+      ]
+    },
+    "bosshp":{
+      "patterns":[
+        {
+          "name":"support.type",
+          "match":"(?i)\\b(counter|breakable|monster|iterator|backup|counter|displayname|countermode|multiparts|hitbox|targetname|hpcounts|cashonly|hammerid)\\b"
+        }
+      ]
+    },
+    "consolet":{
+      "patterns":[
+        {
+          "name":"support.type",
+          "match":"(?i)\\b(chi|blocked|command|countdown)\\b"
+        }
+      ]
+    },
+    "buttons":{
+      "patterns":[
+        {
+          "name":"support.type",
+          "match":"(?i)\\b(id|mode|name|cd)\\b"
+        }
+      ]
+    },
+    "operator":{
+      "patterns":[
+        {
+          "name":"keyword.operator",
+          "match":"((\\+|=|-|\\*|\\/|,|:|;))"
+        }
+      ]
+    },
+    "number":{
+      "patterns":[
+        {
+          "comment": "Integer literal",
+          "match": "\\b\\d+\\b",
+          "name": "constant.numeric.integer"
+        },
+        {
+          "comment": "Float literal",
+          "match": "\\b[0-9]+\\.[0-9]+\\b",
+          "name": "constant.numeric.float"
+        }
+      ]
+    },
+    "boolean":{
+      "patterns":[
+        {
+          "name":"constant.language.boolean",
+          "match":"\\b(?:true|false)\\b"
+        }
+      ]
+    },
+    "nullable":{
+      "patterns":[
+        {
+          "name":"constant.language.boolean",
+          "match":"\\bnull\\b"
+        }
+      ]
+    }
+  }
+}

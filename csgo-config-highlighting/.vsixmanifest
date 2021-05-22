@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Language="en-US" Id="language-csgo-cfg" Version="0.0.2" Publisher="dirt-lxiv"/>
-    <DisplayName>CS:GO Map and Config Highlighting</DisplayName>
-    <Description xml:space="preserve">Highlighting for Map and Config files</Description>
-    <Tags>scripting,csgo,cfg,bsp,highlight,entwatch,Stripper,Stripper:Source,__ext_cfg,__ext_bsp</Tags>
+    <Identity Language="en-US" Id="language-csgo-cfg" Version="1.0" Publisher="Kxnrl"/>
+    <DisplayName>FyS Config Highlighting</DisplayName>
+    <Description xml:space="preserve">Highlighting for Config files</Description>
+    <Tags>fys,csgo,cfg,bsp,vmf,highlight,entwatch,stripper,__ext_cfg,__ext_bsp,__ext_vmf,__ext_kv</Tags>
     <Categories>Programming Languages</Categories>
     <GalleryFlags>Public</GalleryFlags>
     <Badges></Badges>
     <Properties>
-      <Property Id="Microsoft.VisualStudio.Code.Engine" Value="^1.24.0" />
+      <Property Id="Microsoft.VisualStudio.Code.Engine" Value="^1.56.0" />
       <Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value="" />
       <Property Id="Microsoft.VisualStudio.Code.ExtensionPack" Value="" />
       <Property Id="Microsoft.VisualStudio.Code.LocalizedLanguages" Value="" />
       
-        <Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="https://github.com/Frozen-H2O/csgo-config-highlighting" />
-        <Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="https://github.com/Frozen-H2O/csgo-config-highlighting" />
+        <Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="https://github.com/fys-csgo/csgo-config-highlighting" />
+        <Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="https://github.com/fys-csgo/csgo-config-highlighting" />
         
-          <Property Id="Microsoft.VisualStudio.Services.Links.GitHub" Value="https://github.com/Frozen-H2O/csgo-config-highlighting" />
+          <Property Id="Microsoft.VisualStudio.Services.Links.GitHub" Value="https://github.com/fys-csgo/csgo-config-highlighting" />
         
       
-      <Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="https://github.com/Frozen-H2O/csgo-config-highlighting/issues" />
+      <Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="https://github.com/fys-csgo/csgo-config-highlighting/issues" />
       
       <Property Id="Microsoft.VisualStudio.Services.Branding.Color" Value="#273747" />
       <Property Id="Microsoft.VisualStudio.Services.Branding.Theme" Value="dark" />

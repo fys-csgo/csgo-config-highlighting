@@ -1,31 +1,31 @@
 {
-    "name": "csgo-map-config-highlighting",
-    "displayName": "CS:GO Map and Config Highlighting",
-    "description": "Highlights keywords in CS:GO's map and config files",
-    "version": "1.0.3",
-    "publisher": "Azashii",
+    "name": "fys-configs-highlighting",
+    "displayName": "FyS Configs Highlighting",
+    "description": "Highlights keywords in FyS server config files",
+    "version": "1.0.0",
+    "publisher": "Kxnrl",
     "engines": {
-        "vscode": "^1.26.0"
+        "vscode": "^1.56.0"
     },
     "icon": "images/csgo-logo.png",
     "categories": ["Programming Languages"],
-	"keywords": ["scripting","csgo","cfg","bsp","highlight","entwatch","Stripper","Stripper:Source"],
+	"keywords": ["scripting","fys","cfg","bsp","EntWatch","Stripper","BossHP","MapData","Buttons"],
     "license": "GNU General Public License (GPL) version 3",
-	"repository": "https://github.com/Frozen-H2O/csgo-config-highlighting",
+	"repository": "https://github.com/fys-csgo/csgo-config-highlighting",
 	"bugs": {
-		"url": "https://github.com/Frozen-H2O/csgo-config-highlighting/issues"
+		"url": "https://github.com/fys-csgo/csgo-config-highlighting/issues"
 	},
     "contributes": {
         "languages": [{
-            "id": "CSGO cfg",
-            "aliases": ["CS:GO bsp and cfg", "bsp", "cfg"],
-            "extensions": [".cfg", ".bsp"],
+            "id": "FyS Configs",
+            "aliases": ["FyS server config format", "cfg", "kv", "txt", "vmf", "vdf"],
+            "extensions": [".cfg", ".kv", ".vmf", "txt", ".vdf"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
-            "language": "CSGO cfg",
+            "language": "FyS Configs",
             "scopeName": "source.bsp",
-            "path": "./syntaxes/bsp.tmLanguage.json"
+            "path": "./syntaxes/fys.tmLanguage.json"
         }]
     }
 }
